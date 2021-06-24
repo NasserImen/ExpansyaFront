@@ -1,32 +1,114 @@
 <!-- header -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img class="img" src="../../assets/images/Expensya.png" alt="">
-    </a>
-  </nav>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
+<app-header></app-header>
   <!-- end header -->
+  <!-- carrousel -->
+  <div class="row container">
+    <div class="col-md-4 txt">
+      <h1>Une gestion des dépenses automatisée pour toutes les entreprises</h1>
+      <h3>De la dématérialisation des factures au remboursement, Expensya automatise chaque étape du processus de gestion des dépenses de toutes les entreprises peu importe leur taille.</h3>
+    </div>
+    <div class="col-md-4">
+      <img src="../../assets//images/arton15407.jpg">
+    </div>
+  </div><br><br><br>
+  <!-- end carrousel -->
 
   <!-- upload file csv -->
+  <section>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <h1 class="control-label">Upload File</h1><br><br>
+            <div class="preview-zone hidden">
+              <div class="box box-solid">
+                <div class="box-header with-border">
+                  <div><b>Preview</b></div>
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-danger btn-xs remove-preview">
+                      <i class="fa fa-times"></i> Reset The Field
+                    </button>
+                  </div>
+                </div>
+                <div class="box-body"></div>
+              </div>
+            </div>
+            <div class="dropzone-wrapper">
+              <div class="dropzone-desc">
+                <i class="glyphicon glyphicon-download-alt"></i>
+                <p>Choose a file or drag it here.</p>
+              </div>
+              <input type="file"  class="dropzone" (change) = "upload($event)" accept=".csv , .xlsx , .xls" #fileUpload>
+            </div>
+          </div>
+        </div>
+      </div><br><br>
 
-<input type="file" (change) = "upload($event)" accept=".csv , .xlsx , .xls" #fileUpload/>
-<h5>{{file.name}}</h5>
-<button type="button" (click)="uploadFile()">Upload</button>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-secondary" (click) = 'uploadFile()'>Upload File</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+<script>
+  // Code By Webdevtrick ( https://webdevtrick.com )
+function readFile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      var htmlPreview =
+        '<img width="200" src="' + e.target.result + '" />' +
+        '<p>' + input.files[0].name + '</p>';
+      var wrapperZone = $(input).parent();
+      var previewZone = $(input).parent().parent().find('.preview-zone');
+      var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
+
+      wrapperZone.removeClass('dragover');
+      previewZone.removeClass('hidden');
+      boxZone.empty();
+      boxZone.append(htmlPreview);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function reset(e) {
+  e.wrap('<form>').closest('form').get(0).reset();
+  e.unwrap();
+}
+
+$(".dropzone").change(function() {
+  readFile(this);
+});
+
+$('.dropzone-wrapper').on('dragover', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).addClass('dragover');
+});
+
+$('.dropzone-wrapper').on('dragleave', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  $(this).removeClass('dragover');
+});
+
+$('.remove-preview').on('click', function() {
+  var boxZone = $(this).parents('.preview-zone').find('.box-body');
+  var previewZone = $(this).parents('.preview-zone');
+  var dropzone = $(this).parents('.form-group').find('.dropzone');
+  boxZone.empty();
+  previewZone.addClass('hidden');
+  reset(dropzone);
+});
+</script>
   <!-- end upload csv -->

@@ -10,6 +10,6 @@ export class ServicesService {
 url = environment.baseURL
   constructor(private http:HttpClient) { }
   uploadFile(formdata):Observable<any>{
-    return this.http.post<any>(this.url + "/upload/csvupload",formdata)
+    return this.http.post<any>(this.url + "/upload/upload",formdata)
   }
 }

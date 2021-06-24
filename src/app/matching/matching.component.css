@@ -1,0 +1,20 @@
+.title{
+    text-align: center;
+    text-decoration: black;
+    font-size: x-large;
+}
+.array{
+    position: absolute;
+/* transform: translate(0, -50%); */
+    border: 1px solid black;
+    position: relative;
+    border-radius: 25px;;
+    padding: 50px 0;
+    height: 200px;
+    width: 600px;
+    margin-left: 250px;
+}
+
+
+
+
