@@ -5,8 +5,9 @@
 .nav{
     margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 3px solid;
   padding: 10px;
+  background-color: transparent;
 }
 .dropdown:hover .dropdown-menu{
     display: block;

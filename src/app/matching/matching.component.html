@@ -5,39 +5,26 @@
   </div>
 </div>
 <br /><br />
-<div class="row">
-  <div class=" center">
- 
-    <table class="border">
-        <thead *ngFor="let match of getMatching; index as i">
-            <tr>{{match.key}}</tr>
-        </thead>
-    </table>
-
-  </div>
-</div>
-
-<div class="options">
-    <div>
-        <mat-form-field appearance="fill" width="50%">
-            <mat-label>Choose Option</mat-label>
-            <mat-select>
-                <mat-option
-                    *ngFor="let key of matchedKeys , index as i"
-                    [value]="key">
-                    <label style="font-size: 10px; color: rgb(71, 114, 253);">{{key}}
-                    </label>
-                    <label aria-disabled="true"
-                        style="font-size: 10px; color: rgb(118, 3, 212); float : right;">|
-                        {{key}}
-                        % </label>
-                </mat-option>
-            </mat-select>
-            <!-- <mat-error
-                *ngIf="submitted && getNotMatched.controls[i].get('affectedKey')?.errors?.required">
-                Option required</mat-error> -->
-        </mat-form-field>
-    </div>
-</div>
-
+<div class="notmatching container ">
+  <form class="row" style="width: 400px; margin-left: 300px;">
+    <mat-form-field appearance="fill" *ngFor = 'let key of getMatching , index as i'>
+      <mat-label ><h4>{{key.key}}</h4></mat-label>
+      <mat-select>
+        <mat-option (click)="choice(match,i)"  *ngFor = 'let match of key.matchedKeys , index as j' [value]="match" >
+          <h4>{{match[0]}} {{match[1]}}%</h4>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
   
+</div><br><br>
+<div class="container matching"  style="text-align: center;">
+  <h2>Your matched headers</h2><br><br>
+  <div *ngFor = 'let x of matchedKeys , index as j'>
+      <h3>{{x}}</h3>
+  </div>
+</div><br><br><br>
+
+
+
+<button mat-raised-button color="primary" style="margin-left: 600px; margin-bottom: 50px;" (click) = 'change()'>Confirm Match</button>

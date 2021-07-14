@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
+import { FinalMatchComponent } from './final-match/final-match.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './header/header.component';
 import { MatchingComponent } from './matching/matching.component';
 
 const route : Routes=[
@@ -12,6 +12,10 @@ const route : Routes=[
         path : 'importFile',
         component : MatchingComponent
     },
+    {
+        path : 'finalMatch',
+        component : FinalMatchComponent
+    }
 
 ]
 export default route;

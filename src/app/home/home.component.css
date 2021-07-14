@@ -109,3 +109,12 @@ section{
   position: relative;
   left: 500px;
 }
+
+.filename{
+  border: 2px solid rgb(38, 162, 208);
+  border-radius: 25px;
+  padding: 20px;
+  width: 400px;
+  margin-left: 350px;
+  text-align: center;
+}

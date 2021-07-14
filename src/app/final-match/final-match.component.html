@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="container matching"  style="text-align: center;">
+    <h1>Great ! ALL your headers are matched </h1><br><br>
+    <div *ngFor = 'let header of matched , index as i'>
+        <h3>{{header}}</h3>
+    </div>
+    <div *ngFor = 'let match of matching , index as j'>
+        <h3>{{match[0]}}</h3>
+    </div>
+  </div><br><br><br>

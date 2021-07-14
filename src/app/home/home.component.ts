@@ -67,16 +67,6 @@ export class HomeComponent implements OnInit {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
   }
 
-
-
-
-
-
-
-
-
-
-
   
   constructor(private service :ServicesService , public router : Router ) { }
 file: any

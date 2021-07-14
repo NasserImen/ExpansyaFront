@@ -15,6 +15,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatChipsModule} from '@angular/material/chips';
+import { FinalMatchComponent } from './final-match/final-match.component';
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     HomeComponent,
     MatchingComponent,
     HeaderComponent,
+    FinalMatchComponent,
 
   ],
   imports: [
@@ -37,7 +41,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatChipsModule
+
 
 
   ],
